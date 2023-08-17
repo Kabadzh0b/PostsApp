@@ -6,8 +6,8 @@ import PostList from "./components/PostList";
 export default function App() {
     return (
         <Provider store={store}>
-            <PostList></PostList>
             <View style={styles.container}>
+                <PostList></PostList>
                 <Text>Open up App.tsx to start working on your app!</Text>
             </View>
         </Provider>
