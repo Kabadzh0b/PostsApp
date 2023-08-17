@@ -1,11 +1,14 @@
 {
-  "posts": [
+  "posts":[
     {
       "id": 1,
-      "title": "hello"
+      "title": "Hello",
+      "body": "World"
+    },
+    {
+      "id": 2,
+      "title": "Bye",
+      "body": "World"
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
