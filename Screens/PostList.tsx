@@ -1,16 +1,15 @@
 import {FlatList, StyleSheet, Text, View} from "react-native";
 import {useTypedSelector} from "../hooks/useTypedSelector";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import {fetchPosts} from "../store/action-creators/fetchPosts";
 import Post from "../components/Post";
-import {useDispatch} from "react-redux";
-
+import {useActions} from "../hooks/useActions";
 
 export default function PostList() {
-    const dispatch = useDispatch();
+    const {fetchPosts} = useActions();
+
     useEffect(() => {
-        // @ts-ignore
-        dispatch(fetchPosts());
+        fetchPosts();
     }, [])
 
 
@@ -45,14 +44,14 @@ const styles = StyleSheet.create({
         flex: 1,
         marginTop: 36,
     },
-    header:{
-        textAlign:"center",
-        fontWeight:"bold",
-        fontSize:20,
+    header: {
+        textAlign: "center",
+        fontWeight: "bold",
+        fontSize: 20,
     },
-    messages:{
-        textAlign:"center",
-        fontSize:50,
-        fontWeight:"bold"
+    messages: {
+        textAlign: "center",
+        fontSize: 50,
+        fontWeight: "bold"
     }
 })
