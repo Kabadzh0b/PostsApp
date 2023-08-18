@@ -4,7 +4,7 @@ import axios from "axios";
 import IPost from "../../types/IPost";
 
 const POSTS_URL = 'https://my-json-server.typicode.com/Kabadzh0b/PostsApp/posts/';
-export const fetchUsers = () => {
+export const fetchPosts = () => {
     return async (dispatch: Dispatch<PostsAction>) => {
         try {
             dispatch({type: PostsActionTypes.FETCH_POSTS});

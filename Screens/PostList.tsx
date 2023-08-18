@@ -1,16 +1,15 @@
-import {FlatList, StyleSheet, Text, View} from "react-native";
+import {FlatList, Pressable, StyleSheet, Text, View} from "react-native";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 import React, {useEffect} from "react";
 import Post from "../components/Post";
 import {useActions} from "../hooks/useActions";
 
 export default function PostList() {
-    const {fetchUsers} = useActions();
+    const {fetchPosts} = useActions();
 
     useEffect(() => {
-        fetchUsers();
-    }, [])
-
+        fetchPosts();
+    }, []);
 
     const {posts, error, loading} = useTypedSelector(state => state.post);
 
@@ -25,6 +24,7 @@ export default function PostList() {
     return (
         <View style={styles.container}>
             <View style={styles.list}>
+                <Pressable onPress={fetchPosts}><Text>🔄</Text></Pressable>
                 <FlatList data={posts} renderItem={({item}) => <Post title={item.title} body={item.body} id={item.id}/>}
                           keyExtractor={(item) => item.id.toString()}></FlatList>
             </View>

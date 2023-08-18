@@ -1,4 +1,4 @@
-import IComment from "./IPost";
+import IComment from "./IComment";
 
 export enum CommentsActionTypes {
     FETCH_COMMENTS = 'FETCH_COMMENTS',
