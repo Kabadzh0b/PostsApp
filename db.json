@@ -1,5 +1,5 @@
 {
-  "posts":[
+  "posts": [
     {
       "id": 1,
       "title": "Hello",
@@ -9,6 +9,23 @@
       "id": 2,
       "title": "Bye",
       "body": "World"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "postId": 1,
+      "text": "Very interesting post!"
+    },
+    {
+      "id": 2,
+      "postId": 1,
+      "text": "LMAO, so funny XD"
+    },
+    {
+      "id": 3,
+      "postId": 1,
+      "text": "ʕ ᵔᴥᵔ ʔ"
     }
   ]
 }
