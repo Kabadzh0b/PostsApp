@@ -3,13 +3,18 @@ import {useTypedSelector} from "../hooks/useTypedSelector";
 import {useEffect} from "react";
 import {fetchPosts} from "../store/action-creators/fetchPosts";
 import Post from "./Post";
+import {useDispatch} from "react-redux";
+
 
 export default function PostList() {
-    const {posts, error, loading} = useTypedSelector(state => state.post);
-
+    const dispatch = useDispatch();
     useEffect(() => {
-        fetchPosts();
+        // @ts-ignore
+        dispatch(fetchPosts());
     }, [])
+
+
+    const {posts, error, loading} = useTypedSelector(state => state.post);
 
     if (loading) {
         return <View><Text>Loading</Text></View>

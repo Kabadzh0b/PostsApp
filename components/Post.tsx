@@ -1,10 +1,13 @@
 import {View, Text, StyleSheet, Dimensions} from "react-native";
 import IPost from "../types/IPost";
 import CustomButton from "./СustomButton";
+import {deletePost} from "../store/action-creators/deletePost";
+import {useDispatch} from "react-redux";
 
 const ScreenWidth = Dimensions.get('window').width;
 
-export default function Post({title, body}: IPost) {
+export default function Post({title, body, id}: IPost) {
+    const dispatch = useDispatch();
     return (
         <View style={styles.container}>
             <View>
@@ -16,8 +19,11 @@ export default function Post({title, body}: IPost) {
                 </Text>
             </View>
             <View style={styles.buttonsContainer}>
-                <CustomButton title={"Edit"} onPress={()=>{}}/>
-                <CustomButton title={"Delete"} onPress={()=>{}}/>
+                <CustomButton title={"Edit"} onPress={()=> {}}/>
+                <CustomButton title={"Delete"} onPress={()=> {
+                    // @ts-ignore
+                    dispatch(deletePost(id));
+                }}/>
             </View>
         </View>
     );
