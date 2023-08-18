@@ -1,18 +1,18 @@
 import {View, Text, StyleSheet, Dimensions, Pressable} from "react-native";
 import IPost from "../types/IPost";
 import CustomButton from "./СustomButton";
-import {deletePost} from "../store/action-creators/deletePost";
-import {useDispatch} from "react-redux";
 import {useNavigation} from "@react-navigation/native";
 import {HomeScreenNavigationProp} from "../types/HomeStackNavigatorParamList";
+import {useActions} from "../hooks/useActions";
 
 const ScreenWidth = Dimensions.get('window').width;
 
 export default function Post({title, body, id}: IPost) {
-    const dispatch = useDispatch();
+    const {deletePost} = useActions();
     const navigation:HomeScreenNavigationProp = useNavigation();
     return (
         <Pressable style={styles.container} onPress={() => {
+            // @ts-ignore
             navigation.navigate('Comments', {postId:id})
         }}>
             <View>
@@ -27,8 +27,7 @@ export default function Post({title, body, id}: IPost) {
                 <CustomButton title={"Edit"} onPress={() => {
                 }}/>
                 <CustomButton title={"Delete"} onPress={() => {
-                    // @ts-ignore
-                    dispatch(deletePost(id));
+                    deletePost(id);
                 }}/>
             </View>
         </Pressable>

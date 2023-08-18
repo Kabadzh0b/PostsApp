@@ -1,15 +1,14 @@
 import {FlatList, StyleSheet, Text, View} from "react-native";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 import React, {useEffect} from "react";
-import {fetchPosts} from "../store/action-creators/fetchPosts";
 import Post from "../components/Post";
 import {useActions} from "../hooks/useActions";
 
 export default function PostList() {
-    const {fetchPosts} = useActions();
+    const {fetchUsers} = useActions();
 
     useEffect(() => {
-        fetchPosts();
+        fetchUsers();
     }, [])
 
 

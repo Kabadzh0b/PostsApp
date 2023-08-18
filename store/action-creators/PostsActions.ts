@@ -4,7 +4,7 @@ import axios from "axios";
 import IPost from "../../types/IPost";
 
 const POSTS_URL = 'https://my-json-server.typicode.com/Kabadzh0b/PostsApp/posts/';
-export const fetchPosts = () => {
+export const fetchUsers = () => {
     return async (dispatch: Dispatch<PostsAction>) => {
         try {
             dispatch({type: PostsActionTypes.FETCH_POSTS});
@@ -19,13 +19,13 @@ export const fetchPosts = () => {
     }
 }
 
-export const deletePost = (id:number) => {
+export const deletePost = (id: number) => {
     return async (dispatch: Dispatch<PostsAction>) => {
         try {
-            dispatch({type: PostsActionTypes.DELETE_POST, payload:id});
+            dispatch({type: PostsActionTypes.DELETE_POST, payload: id});
             const response = await axios.get(POSTS_URL);
             await axios.delete(POSTS_URL + id);
-            const newArray = response.data.filter((item:IPost) => item.id !== id);
+            const newArray = response.data.filter((item: IPost) => item.id !== id);
             //my-json-server doesn't save changes. I use filter to make difference on UI
             dispatch({type: PostsActionTypes.DELETE_POST_SUCCESS, payload: newArray});
         } catch (e) {
