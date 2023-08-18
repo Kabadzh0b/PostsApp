@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {Provider} from "react-redux";
 import {store} from "./store";
 import PostList from "./components/PostList";
@@ -8,7 +8,6 @@ export default function App() {
         <Provider store={store}>
             <View style={styles.container}>
                 <PostList></PostList>
-                <Text>Open up App.tsx to start working on your app!</Text>
             </View>
         </Provider>
     );
