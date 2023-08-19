@@ -8,6 +8,7 @@ import Comment from "../components/Comment";
 import CustomButton from "../components/СustomButton";
 
 const CommentsList = ({route}: HomeScreenNavigationProp) => {
+
     const {postId} = route.params;
     const {getComments} = useActions();
     const [text, setText] = useState("");
