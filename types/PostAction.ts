@@ -10,6 +10,9 @@ export enum PostsActionTypes {
     ADD_POST = 'ADD_POST',
     ADD_POST_SUCCESS = 'ADD_POST_SUCCESS',
     ADD_POST_ERROR = 'ADD_POST_ERROR',
+    EDIT_POST = 'EDIT_POST',
+    EDIT_POST_SUCCESS = 'EDIT_POST_SUCCESS',
+    EDIT_POST_ERROR = 'EDIT_POST_ERROR',
 }
 
 interface FetchPostsAction {
@@ -55,6 +58,20 @@ interface AddPostErrorAction {
     payload: string;
 }
 
+interface EditPostAction {
+    type: PostsActionTypes.EDIT_POST;
+}
+
+interface EditPostSuccessAction {
+    type: PostsActionTypes.EDIT_POST_SUCCESS;
+    payload: IPost[];
+}
+
+interface EditPostErrorAction {
+    type: PostsActionTypes.EDIT_POST_ERROR;
+    payload: string;
+}
+
 export type PostsAction =
     FetchPostsAction
     | FetchPostsSuccessAction
@@ -64,4 +81,7 @@ export type PostsAction =
     | DeletePostErrorAction
     | AddPostAction
     | AddPostSuccessAction
-    | AddPostErrorAction;
+    | AddPostErrorAction
+    | EditPostAction
+    | EditPostSuccessAction
+    | EditPostErrorAction;

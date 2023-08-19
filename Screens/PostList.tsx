@@ -1,9 +1,9 @@
 import {Button, FlatList, Pressable, StyleSheet, Text, View} from "react-native";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 import React, {useEffect, useState} from "react";
-import Post from "../components/Post";
+import Post from "../components/Post/Post";
 import {useActions} from "../hooks/useActions";
-import AddPostForm from "../components/AddPostForm";
+import AddPostForm from "../components/Post/AddPostForm";
 
 export default function PostList() {
     const {fetchPosts} = useActions();
@@ -36,7 +36,6 @@ export default function PostList() {
                 <View style={addingPost ? {} : styles.displayNone}>
                     <Button title={"Cancel"} onPress={() => setAddingPost(false)}/>
                 </View>
-
                 <FlatList data={posts} renderItem={({item}) => <Post title={item.title} body={item.body} id={item.id}/>}
                           keyExtractor={(item) => item.id.toString()}></FlatList>
             </View>

@@ -1,6 +1,6 @@
 import {Button, StyleSheet, TextInput, View} from "react-native";
 import React, {useState} from "react";
-import {useActions} from "../hooks/useActions";
+import {useActions} from "../../hooks/useActions";
 
 interface FormProps {
     setAddingPost: (value: boolean) => void

@@ -21,6 +21,12 @@ export const postReducer = (state: IPostsState, action: PostsAction): IPostsStat
             return {loading: false, error: null, posts: action.payload};
         case PostsActionTypes.ADD_POST_ERROR:
             return {loading: false, error: action.payload, posts: []};
+        case PostsActionTypes.EDIT_POST:
+            return {loading: true, error: null, posts:[]};
+        case PostsActionTypes.EDIT_POST_SUCCESS:
+            return {loading: false, error: null, posts: action.payload};
+        case PostsActionTypes.EDIT_POST_ERROR:
+            return {loading: false, error: action.payload, posts: []};
         default:
             return {loading: false, error: null, posts: []}
     }
