@@ -7,6 +7,9 @@ export enum PostsActionTypes {
     DELETE_POST = 'DELETE_POST',
     DELETE_POST_SUCCESS = 'DELETE_POST_SUCCESS',
     DELETE_POST_ERROR = 'DELETE_POST_ERROR',
+    ADD_POST = 'ADD_POST',
+    ADD_POST_SUCCESS = 'ADD_POST_SUCCESS',
+    ADD_POST_ERROR = 'ADD_POST_ERROR',
 }
 
 interface FetchPostsAction {
@@ -38,10 +41,27 @@ interface DeletePostErrorAction {
     payload: string;
 }
 
+interface AddPostAction {
+    type: PostsActionTypes.ADD_POST;
+}
+
+interface AddPostSuccessAction {
+    type: PostsActionTypes.ADD_POST_SUCCESS;
+    payload: IPost[];
+}
+
+interface AddPostErrorAction {
+    type: PostsActionTypes.ADD_POST_ERROR;
+    payload: string;
+}
+
 export type PostsAction =
     FetchPostsAction
     | FetchPostsSuccessAction
     | FetchPostsErrorAction
     | DeletePostAction
     | DeletePostSuccessAction
-    | DeletePostErrorAction;
+    | DeletePostErrorAction
+    | AddPostAction
+    | AddPostSuccessAction
+    | AddPostErrorAction;

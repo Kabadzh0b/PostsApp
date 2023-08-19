@@ -2,6 +2,7 @@ import {PostsAction, PostsActionTypes} from "../../types/PostAction";
 import {Dispatch} from "redux";
 import axios from "axios";
 import IPost from "../../types/IPost";
+let lastIndex = 3;
 
 const POSTS_URL = 'https://my-json-server.typicode.com/Kabadzh0b/PostsApp/posts/';
 export const fetchPosts = () => {
@@ -31,6 +32,28 @@ export const deletePost = (id: number) => {
         } catch (e) {
             dispatch({
                 type: PostsActionTypes.DELETE_POST_ERROR,
+                payload: "Error happened :( Post haven`t been deleted. Try again."
+            });
+        }
+    }
+}
+
+export const addPost = (title:string = "", body:string = "") => {
+    return async (dispatch: Dispatch<PostsAction>) => {
+        try {
+            dispatch({type: PostsActionTypes.ADD_POST});
+            await axios.post(POSTS_URL, {
+                title: title,
+                body: body,
+                id:++lastIndex,
+            });
+            const response = await axios.get(POSTS_URL);
+            //Unfortunately we need to push an array to display post in UI, because my-json-server doesn't persist actions
+            response.data.push({title: title, body: body, id:lastIndex});
+            dispatch({type: PostsActionTypes.ADD_POST_SUCCESS, payload: response.data});
+        } catch (e) {
+            dispatch({
+                type: PostsActionTypes.ADD_POST_ERROR,
                 payload: "Error happened :( Post haven`t been deleted. Try again."
             });
         }

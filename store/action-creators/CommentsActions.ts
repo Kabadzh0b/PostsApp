@@ -26,7 +26,6 @@ export const deleteComment = (id: number, postId:number) => {
             //Unfortunately we need to filter an array to display delete in UI, because my-json-server doesn't persist actions
             dispatch({type: CommentsActionTypes.DELETE_COMMENT_SUCCESS, payload: newArr});
         } catch (e) {
-            console.log(e);
             dispatch({type: CommentsActionTypes.DELETE_COMMENT_ERROR, payload: "We cannot delete comment"});
         }
     }
