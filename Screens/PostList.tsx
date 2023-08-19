@@ -25,14 +25,17 @@ export default function PostList() {
 
     return (
         <View style={styles.container}>
-
             <Pressable onPress={fetchPosts}><Text>🔄</Text></Pressable>
             <View style={styles.list}>
                 <View style={addingPost ? styles.form : styles.displayNone}>
                     <AddPostForm setAddingPost={setAddingPost}/>
                 </View>
-
-                <Button title={"Add Post"} onPress={() => setAddingPost(true)}/>
+                <View style={addingPost ? styles.displayNone : {}}>
+                    <Button title={"Add Post"} onPress={() => setAddingPost(true)}/>
+                </View>
+                <View style={addingPost ? {} : styles.displayNone}>
+                    <Button title={"Cancel"} onPress={() => setAddingPost(false)}/>
+                </View>
 
                 <FlatList data={posts} renderItem={({item}) => <Post title={item.title} body={item.body} id={item.id}/>}
                           keyExtractor={(item) => item.id.toString()}></FlatList>
@@ -62,10 +65,8 @@ const styles = StyleSheet.create({
         fontSize: 50,
         fontWeight: "bold"
     },
-    form:{
-
-    },
+    form: {},
     displayNone: {
-        display:"none",
+        display: "none",
     }
 })
