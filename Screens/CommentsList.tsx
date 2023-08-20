@@ -10,7 +10,7 @@ import CustomButton from "../components/СustomButton";
 const CommentsList = ({route}: HomeScreenNavigationProp) => {
 
     const {postId} = route.params;
-    const {getComments} = useActions();
+    const {getComments, addComment} = useActions();
     const [text, setText] = useState("");
 
     useEffect(() => {
@@ -38,9 +38,11 @@ const CommentsList = ({route}: HomeScreenNavigationProp) => {
                     onChangeText={setText}
                     value={text}
                     multiline
-                    placeholder="useless placeholder"
+                    placeholder="write a new comment"
                 />
                 <CustomButton title={"Send"} onPress={() => {
+                    addComment(postId, text);
+                    setText("");
                 }}/>
             </View>
 

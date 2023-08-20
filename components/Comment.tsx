@@ -12,7 +12,7 @@ const Comment = ({id, postId, text}: IComment) => {
                 <CustomButton title={"Edit"} onPress={() => {
                 }}/>
                 <CustomButton title={"Delete"} onPress={() => {
-                    deleteComment(id, postId)
+                    deleteComment(id, postId);
                 }}/>
             </View>
         </View>

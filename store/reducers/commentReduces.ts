@@ -15,6 +15,12 @@ export const commentReducer = (state: ICommentsState, action: CommentsAction): I
             return {loading: false, error: null, comments: action.payload};
         case CommentsActionTypes.DELETE_COMMENT_ERROR:
             return {loading: false, error: action.payload, comments: []};
+        case CommentsActionTypes.ADD_COMMENT:
+            return {loading: true, error: null, comments: []};
+        case CommentsActionTypes.ADD_COMMENT_SUCCESS:
+            return {loading: false, error: null, comments: action.payload};
+        case CommentsActionTypes.ADD_COMMENT_ERROR:
+            return {loading: false, error: action.payload, comments: []};
         default:
             return {loading: false, error: null, comments: []}
     }

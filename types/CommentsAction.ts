@@ -7,11 +7,13 @@ export enum CommentsActionTypes {
     DELETE_COMMENT = 'DELETE_COMMENT',
     DELETE_COMMENT_SUCCESS = 'DELETE_COMMENT_SUCCESS',
     DELETE_COMMENT_ERROR = 'DELETE_COMMENT_ERROR',
+    ADD_COMMENT = 'ADD_COMMENT',
+    ADD_COMMENT_SUCCESS = 'ADD_COMMENT_SUCCESS',
+    ADD_COMMENT_ERROR = 'ADD_COMMENT_ERROR',
 }
 
 interface FetchCommentsAction {
     type: CommentsActionTypes.FETCH_COMMENTS;
-    payload: number;
 }
 
 interface FetchCommentsSuccessAction {
@@ -26,7 +28,6 @@ interface FetchCommentsErrorAction {
 
 interface DeleteCommentsAction {
     type: CommentsActionTypes.DELETE_COMMENT;
-    payload: number;
 }
 
 interface DeleteCommentsSuccessAction {
@@ -39,10 +40,27 @@ interface DeleteCommentsErrorAction {
     payload: string;
 }
 
+interface AddCommentsAction {
+    type: CommentsActionTypes.ADD_COMMENT;
+}
+
+interface AddCommentsSuccessAction {
+    type: CommentsActionTypes.ADD_COMMENT_SUCCESS;
+    payload: IComment[];
+}
+
+interface AddCommentsErrorAction {
+    type: CommentsActionTypes.ADD_COMMENT_ERROR;
+    payload: string;
+}
+
 export type CommentsAction =
     FetchCommentsAction
     | FetchCommentsSuccessAction
     | FetchCommentsErrorAction
     | DeleteCommentsAction
     | DeleteCommentsSuccessAction
-    | DeleteCommentsErrorAction;
+    | DeleteCommentsErrorAction
+    | AddCommentsAction
+    | AddCommentsSuccessAction
+    | AddCommentsErrorAction;
