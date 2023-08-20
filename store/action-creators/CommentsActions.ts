@@ -48,10 +48,31 @@ export const addComment = (postId: number, text: string) => {
                 postID: postId,
                 text: text,
             })
-            dispatch({type: CommentsActionTypes.DELETE_COMMENT_SUCCESS, payload: response.data});
+            dispatch({type: CommentsActionTypes.ADD_COMMENT_SUCCESS, payload: response.data});
         } catch (e) {
-            dispatch({type: CommentsActionTypes.DELETE_COMMENT_ERROR, payload: "We cannot add a comment"});
+            dispatch({type: CommentsActionTypes.ADD_COMMENT_ERROR, payload: "We cannot add a comment"});
         }
     }
 }
 
+export const editComment = (id:number, postId:number ,text:string) => {
+    return async (dispatch: Dispatch<CommentsAction>) => {
+        try {
+            dispatch({type: CommentsActionTypes.EDIT_COMMENT});
+            const response = await axios.get(COMMENTS_URL + `?postId=${postId}`)
+            await axios.patch(COMMENTS_URL + `/${id}`, {
+                text: text,
+            });
+            //Unfortunately we need to push an array to display delete in UI, because my-json-server doesn't persist actions
+            response.data = response.data.filter((item:IComment):boolean => item.id !== id);
+            response.data.push({
+                id: lastIndex,
+                postID: postId,
+                text: text,
+            })
+            dispatch({type: CommentsActionTypes.EDIT_COMMENT_SUCCESS, payload: response.data});
+        } catch (e) {
+            dispatch({type: CommentsActionTypes.EDIT_COMMENT_ERROR, payload: "We cannot edit a comment :C"});
+        }
+    }
+}

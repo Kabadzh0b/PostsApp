@@ -10,6 +10,9 @@ export enum CommentsActionTypes {
     ADD_COMMENT = 'ADD_COMMENT',
     ADD_COMMENT_SUCCESS = 'ADD_COMMENT_SUCCESS',
     ADD_COMMENT_ERROR = 'ADD_COMMENT_ERROR',
+    EDIT_COMMENT = 'EDIT_COMMENT',
+    EDIT_COMMENT_SUCCESS = 'EDIT_COMMENT_SUCCESS',
+    EDIT_COMMENT_ERROR = 'EDIT_COMMENT_ERROR',
 }
 
 interface FetchCommentsAction {
@@ -54,6 +57,20 @@ interface AddCommentsErrorAction {
     payload: string;
 }
 
+interface EditCommentsAction {
+    type: CommentsActionTypes.EDIT_COMMENT;
+}
+
+interface EditCommentsSuccessAction {
+    type: CommentsActionTypes.EDIT_COMMENT_SUCCESS;
+    payload: IComment[];
+}
+
+interface EditCommentsErrorAction {
+    type: CommentsActionTypes.EDIT_COMMENT_ERROR;
+    payload: string;
+}
+
 export type CommentsAction =
     FetchCommentsAction
     | FetchCommentsSuccessAction
@@ -63,4 +80,7 @@ export type CommentsAction =
     | DeleteCommentsErrorAction
     | AddCommentsAction
     | AddCommentsSuccessAction
-    | AddCommentsErrorAction;
+    | AddCommentsErrorAction
+    | EditCommentsAction
+    | EditCommentsSuccessAction
+    | EditCommentsErrorAction;

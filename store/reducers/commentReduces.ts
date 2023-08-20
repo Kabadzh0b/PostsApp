@@ -21,7 +21,13 @@ export const commentReducer = (state: ICommentsState, action: CommentsAction): I
             return {loading: false, error: null, comments: action.payload};
         case CommentsActionTypes.ADD_COMMENT_ERROR:
             return {loading: false, error: action.payload, comments: []};
+        case CommentsActionTypes.EDIT_COMMENT:
+            return {loading: true, error: null, comments: []};
+        case CommentsActionTypes.EDIT_COMMENT_SUCCESS:
+            return {loading: false, error: null, comments: action.payload};
+        case CommentsActionTypes.EDIT_COMMENT_ERROR:
+            return {loading: false, error: action.payload, comments: []};
         default:
-            return {loading: false, error: null, comments: []}
+            return {loading: false, error: null, comments: []};
     }
 }

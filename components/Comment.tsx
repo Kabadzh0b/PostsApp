@@ -4,12 +4,13 @@ import CustomButton from "./СustomButton";
 import {useActions} from "../hooks/useActions";
 
 const Comment = ({id, postId, text}: IComment) => {
-    const {deleteComment} = useActions();
+    const {deleteComment, editComment} = useActions();
     return (
         <View style={styles.container}>
             <Text>{text}</Text>
             <View style={styles.buttonsContainer}>
                 <CustomButton title={"Edit"} onPress={() => {
+                    editComment(id, postId, "test");
                 }}/>
                 <CustomButton title={"Delete"} onPress={() => {
                     deleteComment(id, postId);
