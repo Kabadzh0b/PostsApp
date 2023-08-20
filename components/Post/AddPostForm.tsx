@@ -39,6 +39,10 @@ const AddPostForm = ({setAddingPost}: FormProps) => {
 export default AddPostForm;
 
 const styles = StyleSheet.create({
-    container: {},
-    input: {}
+    container: {
+
+    },
+    input: {
+        textAlign:"center",
+    }
 })

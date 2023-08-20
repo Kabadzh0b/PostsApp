@@ -25,7 +25,7 @@ export default function PostList() {
 
     return (
         <View style={styles.container}>
-            <Pressable onPress={fetchPosts}><Text>🔄</Text></Pressable>
+            <Pressable onPress={fetchPosts}><Text style={styles.refresh}>🔄</Text></Pressable>
             <View style={styles.list}>
                 <View style={addingPost ? styles.form : styles.displayNone}>
                     <AddPostForm setAddingPost={setAddingPost}/>
@@ -50,9 +50,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    refresh:{
+      fontSize:30,
+    },
     list: {
         flex: 1,
-        marginTop: 36,
+    },
+    form:{
+
     },
     header: {
         textAlign: "center",
@@ -64,7 +69,6 @@ const styles = StyleSheet.create({
         fontSize: 50,
         fontWeight: "bold"
     },
-    form: {},
     displayNone: {
         display: "none",
     }

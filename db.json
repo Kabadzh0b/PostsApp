@@ -2,13 +2,13 @@
   "posts": [
     {
       "id": 1,
-      "title": "Hello",
-      "body": "World"
+      "title": "Excepteur sint occaecat",
+      "body": "cupidatat non proident, sunt in culpa qui officia"
     },
     {
       "id": 2,
-      "title": "Bye",
-      "body": "World"
+      "title": "Ut enim ad minim",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     }
   ],
   "comments": [
@@ -26,6 +26,11 @@
       "id": 3,
       "postId": 1,
       "text": "ʕ ᵔᴥᵔ ʔ"
+    },
+    {
+      "id": 4,
+      "postId": 2,
+      "text": "I like this guy"
     }
   ]
 }
