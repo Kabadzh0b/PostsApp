@@ -70,7 +70,6 @@ export const editPost = (title: string, body: string, id: number) => {
                 body: body,
             });
             const response = await axios.get(POSTS_URL);
-            console.log(response.data);
             //Unfortunately we need change an array to display edited post in UI, because my-json-server doesn't persist actions
             response.data = response.data.filter((item: IPost) => item.id !== id);
             response.data.push({
@@ -78,7 +77,6 @@ export const editPost = (title: string, body: string, id: number) => {
                 body: body,
                 id: id
             });
-            console.log(response.data);
             dispatch({type: PostsActionTypes.ADD_POST_SUCCESS, payload: response.data});
         } catch (e) {
             dispatch({

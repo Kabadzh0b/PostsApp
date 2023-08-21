@@ -4,7 +4,7 @@ import {CommentsAction, CommentsActionTypes} from "../../types/CommentsAction";
 import IComment from "../../types/IComment";
 
 const COMMENTS_URL = 'https://my-json-server.typicode.com/Kabadzh0b/PostsApp/comments';
-let lastIndex = 3;
+let lastIndex = 4;
 export const getComments = (id: number) => {
     return async (dispatch: Dispatch<CommentsAction>) => {
         try {
@@ -49,13 +49,13 @@ export const addComment = (postId: number, text: string) => {
                 text: text,
             })
             dispatch({type: CommentsActionTypes.ADD_COMMENT_SUCCESS, payload: response.data});
-        } catch (e) {
+        } catch {
             dispatch({type: CommentsActionTypes.ADD_COMMENT_ERROR, payload: "We cannot add a comment"});
         }
     }
 }
 
-export const editComment = (id:number, postId:number ,text:string) => {
+export const editComment = (id: number, postId: number, text: string) => {
     return async (dispatch: Dispatch<CommentsAction>) => {
         try {
             dispatch({type: CommentsActionTypes.EDIT_COMMENT});
@@ -64,7 +64,7 @@ export const editComment = (id:number, postId:number ,text:string) => {
                 text: text,
             });
             //Unfortunately we need to push an array to display delete in UI, because my-json-server doesn't persist actions
-            response.data = response.data.filter((item:IComment):boolean => item.id !== id);
+            response.data = response.data.filter((item: IComment): boolean => item.id !== id);
             response.data.push({
                 id: lastIndex,
                 postID: postId,

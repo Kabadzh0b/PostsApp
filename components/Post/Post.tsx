@@ -11,8 +11,8 @@ const ScreenWidth = Dimensions.get('window').width;
 export default function Post({title, body, id}: IPost) {
     const [editTitle, setEditTitle] = useState(title);
     const [editBody, setEditBody] = useState(body);
-    const navigation: HomeScreenNavigationProp = useNavigation();
     const [editing, setEditing] = useState(false);
+    const navigation: HomeScreenNavigationProp = useNavigation();
 
     return (
         <Pressable onPress={() => {
